@@ -11,6 +11,7 @@ npmstuff:
 
 run: 
 	./fab/fab src.txt GhostStars grammar.ohm fabricate.fmt
+	./fab/fab - GhostStars grammar.ohm fabricate.fmt <src.txt
 
 runlisp:
 	./fab/fab src.txt GhostStars grammar.ohm lispfabricate.fmt
