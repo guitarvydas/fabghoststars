@@ -11,9 +11,11 @@
             "id": "0479b07b0b2cf4cd",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "doc/invoking script to JSON Screen Shot 2022-10-19 at 10.04.15 AM.png"
+                "file": "README.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -83,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "doc/invoking script to JSON Screen Shot 2022-10-19 at 10.04.15 AM.png",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "doc/invoking script to JSON Screen Shot 2022-10-19 at 10.04.15 AM.png",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -123,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "doc/invoking script to JSON Screen Shot 2022-10-19 at 10.04.15 AM.png"
+                "file": "README.md"
               }
             }
           }
@@ -136,6 +138,7 @@
   },
   "active": "0479b07b0b2cf4cd",
   "lastOpenFiles": [
+    "doc/invoking script to JSON Screen Shot 2022-10-19 at 10.04.15 AM.png",
     "README.md"
   ]
 }
