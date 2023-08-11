@@ -407,13 +407,21 @@ read_text_file_instantiate :: proc(name: string) -> ^zd.Eh {
 }
 
 read_text_file_proc :: proc(eh: ^zd.Eh, msg: zd.Message) {
-    data, success := os.read_entire_file_from_filename (msg.datum.(string))
-    if success {
-	zd.send(eh, "str", transmute(string)data)
+    fd, errnum := os.open (msg.datum.(string))
+    if errnum == 0 {
+	data, success := os.read_entire_file_from_handle (fd)
+	if success {
+	    zd.send(eh, "str", transmute(string)data)
+	} else {
+	    sb: strings.Builder
+	    defer strings.builder_destroy(&sb)
+            fmt.sbprintf(&sb, "read error on file %s", msg.datum.(string))
+	    zd.send(eh, "error", sb)
+	}
     } else {
 	sb: strings.Builder
 	defer strings.builder_destroy(&sb)
-        fmt.sbprintf(&sb, "read error on file %s", msg.datum.(string))
+        fmt.sbprintf(&sb, "open error on file %s with error code %v", msg.datum.(string), errnum)
 	zd.send(eh, "error", sb)
     }
 }
