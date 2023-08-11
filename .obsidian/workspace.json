@@ -64,6 +64,14 @@
               "type": "starred",
               "state": {}
             }
+          },
+          {
+            "id": "e031a2f7f00b16e3",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
           }
         ]
       }
@@ -136,9 +144,25 @@
     "width": 300,
     "collapsed": true
   },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
   "active": "0479b07b0b2cf4cd",
   "lastOpenFiles": [
-    "doc/invoking script to JSON Screen Shot 2022-10-19 at 10.04.15 AM.png",
-    "README.md"
+    "doc/fabghoststars.svg.md",
+    "README.md",
+    "doc/fabghoststars.png",
+    "doc/ghoststars.svg.crswap",
+    "doc/ghoststars.svg",
+    "doc/ghoststars.excalidraw.crswap",
+    "doc/ghoststars.excalidraw",
+    "doc/invoking script to JSON Screen Shot 2022-10-19 at 10.04.15 AM.png"
   ]
 }
