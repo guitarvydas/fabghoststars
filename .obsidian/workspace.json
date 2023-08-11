@@ -156,6 +156,8 @@
   },
   "active": "0479b07b0b2cf4cd",
   "lastOpenFiles": [
+    "#transpile#",
+    "transpile~",
     "fabghoststars.o",
     "transpile",
     "#main.odin#",
@@ -165,8 +167,6 @@
     "fabghoststars.dSYM/Contents/Info.plist",
     "fabghoststars.dSYM/Contents",
     "fabghoststars.dSYM",
-    "fabghoststars",
-    "process/process.odin~",
     "0d/README.md",
     "doc/fabghoststars.svg.md",
     "README.md",

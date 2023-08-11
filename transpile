@@ -551,12 +551,15 @@ function main (argv) {
     tracing = false;
     traceDepth = 0;
     srcfilename = '/dev/fd/0';
-    var grammarfilename = argv._[0];
-    var fabfilename = argv._[1];
+    // var grammarfilename = argv._[0];
+    var grammarfilename = '/dev/fd/3';
+    //var fabfilename = argv._[1];
+    var fabfilename = '/dev/fd/4';
     var src = fs.readFileSync (srcfilename, 'utf-8');
     var grammar = fs.readFileSync (grammarfilename, 'utf-8');
     var fab = fs.readFileSync (fabfilename, 'utf-8');
-    var support = argv._[2];
+    // var support = argv._[2];
+    var support = '/dev/fd/5';
     var r;
     if (argv.grammarname) {
 	console.error (`multi ${argv.grammarname}`);
