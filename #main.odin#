@@ -64,6 +64,8 @@ main :: proc() {
 }
 
 run :: proc (main_container : ^zd.Eh) {
-    main_container.handler(main_container, zd.make_message("cmd", "./transpile grammar.ohm fabricate.fab support.js"))
+    main_container.handler(main_container, zd.make_message("grammarname", "grammar.ohm"))
+    main_container.handler(main_container, zd.make_message("fabname", "fabricate.fab"))
+    main_container.handler(main_container, zd.make_message("cmd", "./fab grammar.ohm fabricate.fab support.js"))
     main_container.handler(main_container, zd.make_message("srcfilename", "src.txt"))
 }

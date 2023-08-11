@@ -157,6 +157,8 @@
   "active": "0479b07b0b2cf4cd",
   "lastOpenFiles": [
     "fabghoststars.o",
+    "transpile",
+    "#main.odin#",
     "fabghoststars.dSYM/Contents/Resources/DWARF/fabghoststars",
     "fabghoststars.dSYM/Contents/Resources/DWARF",
     "fabghoststars.dSYM/Contents/Resources",
@@ -164,9 +166,7 @@
     "fabghoststars.dSYM/Contents",
     "fabghoststars.dSYM",
     "fabghoststars",
-    "#main.odin#",
     "process/process.odin~",
-    "process/process.odin",
     "0d/README.md",
     "doc/fabghoststars.svg.md",
     "README.md",
