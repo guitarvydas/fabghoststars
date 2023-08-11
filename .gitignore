@@ -4,6 +4,5 @@ _*
 node_modules/*
 py/__pycache/*
 *.mov
-fab/
 junk.*
 junk*
