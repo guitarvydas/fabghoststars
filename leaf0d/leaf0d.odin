@@ -409,6 +409,7 @@ read_text_file_instantiate :: proc(name: string) -> ^zd.Eh {
 read_text_file_proc :: proc(eh: ^zd.Eh, msg: zd.Message) {
     fd, errnum := os.open (msg.datum.(string))
     if errnum == 0 {
+	fmt.println ("fd = ", fd)
 	data, success := os.read_entire_file_from_handle (fd)
 	if success {
 	    zd.send(eh, "str", transmute(string)data)
@@ -439,3 +440,50 @@ panic_instantiate :: proc(name: string) -> ^zd.Eh {
 panic_proc :: proc(eh: ^zd.Eh, msg: zd.Message) {
     assert (false, msg.datum.(string))
 }
+
+////
+
+open_text_file_instantiate :: proc(name: string) -> ^zd.Eh {
+    @(static) counter := 0
+    counter += 1
+
+    name_with_id := fmt.aprintf("Open Text File (ID:%d)", counter)
+    return zd.make_leaf(name_with_id, open_text_file_proc)
+}
+
+open_text_file_proc :: proc(eh: ^zd.Eh, msg: zd.Message) {
+    fd, errnum := os.open (msg.datum.(string))
+    if errnum == 0 {
+	fmt.println ("fd = ", fd)
+	zd.send(eh, "fd", fd)
+    } else {
+	sb: strings.Builder
+	defer strings.builder_destroy(&sb)
+        fmt.sbprintf(&sb, "open error on file %s with error code %v", msg.datum.(string), errnum)
+	zd.send(eh, "error", sb)
+    }
+}
+
+////////
+
+read_text_from_fd_instantiate :: proc(name: string) -> ^zd.Eh {
+    @(static) counter := 0
+    counter += 1
+
+    name_with_id := fmt.aprintf("Read Text From FD (ID:%d)", counter)
+    return zd.make_leaf(name_with_id, read_text_from_fd_proc)
+}
+
+read_text_from_fd_proc :: proc(eh: ^zd.Eh, msg: zd.Message) {
+    fd := msg.datum.(os.Handle)
+    data, success := os.read_entire_file_from_handle (fd)
+    if success {
+	zd.send(eh, "str", transmute(string)data)
+    } else {
+	sb: strings.Builder
+	defer strings.builder_destroy(&sb)
+        fmt.sbprintf(&sb, "read error on file %s", msg.datum.(string))
+	zd.send(eh, "error", sb)
+    }
+}
+
