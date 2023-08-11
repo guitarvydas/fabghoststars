@@ -12,8 +12,6 @@ import "../process"
 import "../syntax"
 import zd "../0d"
 
-Bang :: true
-
 stdout_instantiate :: proc(name: string) -> ^zd.Eh {
     return zd.make_leaf(name, stdout_proc)
 }
@@ -60,7 +58,7 @@ process_proc :: proc(eh: ^zd.Eh, msg: zd.Message, command: ^string) {
                 os.write(handle.input, bytes)
             case []byte:
                 os.write(handle.input, value)
-            case Bang:
+            case zd.Bang:
                 // OK, no input, just run it
             case:
                 log.errorf("%s: Shell leaf input can handle string, bytes, or bang (got: %v)", eh.name, value.id)
@@ -398,3 +396,38 @@ stringconcat_proc :: proc(eh: ^zd.Eh, msg: zd.Message, inst: ^StringConcat_Insta
     }
 }
 
+////////
+
+read_text_file_instantiate :: proc(name: string) -> ^zd.Eh {
+    @(static) counter := 0
+    counter += 1
+
+    name_with_id := fmt.aprintf("Read Text File (ID:%d)", counter)
+    return zd.make_leaf(name_with_id, read_text_file_proc)
+}
+
+read_text_file_proc :: proc(eh: ^zd.Eh, msg: zd.Message) {
+    data, success := os.read_entire_file_from_filename (msg.datum.(string))
+    if success {
+	zd.send(eh, "str", transmute(string)data)
+    } else {
+	sb: strings.Builder
+	defer strings.builder_destroy(&sb)
+        fmt.sbprintf(&sb, "read error on file %s", msg.datum.(string))
+	zd.send(eh, "error", sb)
+    }
+}
+
+////////
+
+panic_instantiate :: proc(name: string) -> ^zd.Eh {
+    @(static) counter := 0
+    counter += 1
+
+    name_with_id := fmt.aprintf("panic (ID:%d)", counter)
+    return zd.make_leaf(name_with_id, panic_proc)
+}
+
+panic_proc :: proc(eh: ^zd.Eh, msg: zd.Message) {
+    assert (false, msg.datum.(string))
+}
