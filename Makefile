@@ -1,10 +1,6 @@
-all: repos run
+all: run
 
-
-install: repos npmstuff
-
-repos:
-	multigit -r
+install: npmstuff
 
 npmstuff:
 	npm install ohm-js yargs atob pako
