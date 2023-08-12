@@ -151,11 +151,21 @@
       "canvas:Create new canvas": false,
       "daily-notes:Open today's daily note": false,
       "templates:Insert template": false,
-      "command-palette:Open command palette": false
+      "command-palette:Open command palette": false,
+      "obsidian-excalidraw-plugin:Create new drawing": false
     }
   },
   "active": "0479b07b0b2cf4cd",
   "lastOpenFiles": [
+    "#src.txt#",
+    "main Screenshot 2023-08-12 at 9.19.31 AM.png",
+    "textfilereader Screenshot 2023-08-12 at 9.19.42 AM.png",
+    "Screenshot 2023-08-12 at 9.19.31 AM.png",
+    "Screenshot 2023-08-12 at 9.19.42 AM.png",
+    "Excalidraw/README 2023-08-12 07.41.03.excalidraw.md",
+    "Excalidraw/README 2023-08-12 07.41.03.excalidraw.svg",
+    "README.md",
+    "Excalidraw",
     "fabghoststars.o",
     "fabghoststars.ld_AeEzZY",
     "fabghoststars.ld_qwkM6J",
@@ -165,11 +175,8 @@
     "#transpile#",
     "transpile~",
     "transpile",
-    "#main.odin#",
-    "fabghoststars.dSYM/Contents/Resources/DWARF/fabghoststars",
     "0d/README.md",
     "doc/fabghoststars.svg.md",
-    "README.md",
     "doc/fabghoststars.png",
     "doc/ghoststars.svg",
     "doc/invoking script to JSON Screen Shot 2022-10-19 at 10.04.15 AM.png"
