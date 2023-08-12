@@ -1,15 +1,15 @@
-Demo of using Drawware to transpile a game script into JSON.
+Demo of using Drawware to transpile a partial game script into JSON.
 
 # Usage
 - edit the diagram `ghoststars.drawio` (and save)
 - `make`
 
 # Tour
-For this experiment, I've included all of the `odin0d` code in with the `ghostars` text.
+For this experiment, we've included all of the `odin0d` code in with the `ghoststars` program.
 
 Presently, there is a dearth of components, so this demo can show only a very simple example.  In the future, more components will be built up using layers of drawware.
 
-For this experiment, I've hand-built a `Transpiler` component in Odin which calls Ohm-JS and Fab to do the transpilation.  This can probably be done better, but I had to start somewhere...
+For this experiment, we've hand-built a `Transpiler` component in Odin which calls Ohm-JS and Fab to do the transpilation.  This can probably be done better, but we had to start somewhere...
 
 ## Main
 
@@ -32,7 +32,7 @@ See the appendices for the contents of the above files.
 
 `Main` is the main entry point of the executable code[^main].
 
-`Main` contains 4 inputs and one output and one use of the `panic` component.
+`Main` contains 4 inputs and one output and a single use of the `panic` component.
 
 `Main` contains 2 components
 - Transpiler
@@ -68,7 +68,7 @@ The purple `?` component is a debugging *probe*.  It can be used to watch data c
 1. set up a test bench
 2. debug drawware programs.
 
-In this experiment, I've stuck a `?` component in the `textfilereader` component.  This `?` is entirely superfluous here and is included only for expository purposes.  Note that *probing* requires that *fan-out* be allowed at the technical level.  *Fan-out* brings along with it some technical challenges, like how to make a copy of a message and/or how to sample a message.  In electronics, probes suck a tiny bit of current away from the circuit.  In EE, it is important to design probes such that they are *high impedance*, which means that they suck only a inconsequential amount of current away from the circuit and don't affect the performance of the circuit.  In software, I choose to clone() the message.  There might be other ways to accomplish this, but, I haven't figured them any yet.  Anyways, copying is trivial if you use a GC'ed language, like Python, JS, Lisp, etc.  Odin does not support automatic GC, so one has to design the kernel code (0d/...) carefully to avoid memory leaks.
+In this experiment, we've stuck a `?` component in the `textfilereader` component.  This `?` is entirely superfluous here and is included only for expository purposes.  Note that *probing* requires that *fan-out* be allowed at the technical level.  *Fan-out* brings along with it some technical challenges, like how to make a deep copy of a message and/or how to sample a message.  In electronics, probes suck a tiny bit of current away from the circuit.  In EE, it is important to design probes such that they are *high impedance*, which means that they suck only inconsequential amountd of current away from the circuit and don't affect the performance of the circuit.  In software, we choose to clone() the message.  There might be other ways to accomplish this, but, we haven't figured these out yet.  Anyways, copying is trivial if you use a GC'ed language, like Python, JS, Lisp, etc.  Odin does not support automatic GC, so one has to design the kernel code (0d/...) carefully to avoid memory leaks.
 
 The circled-`X` icon is meant for future "type-checking" of NC (No Connection) connections.  This kind of checking is not currently implemented.
 
@@ -83,7 +83,7 @@ The circled-`X` icon is meant for future "type-checking" of NC (No Connection) c
 ### 0D
 The implementation of 0D using the Odin programming language.
 
-Each component is described by a data structure called *eh*.
+Each component is described by a data structure called ė (spelled *eh* in ASCII).
 
 The system treats every component, Container or Leaf, as a tiny state machine with 2 states
 1. idle
@@ -95,9 +95,9 @@ Each message contains 2 fields
 1. port
 2. datum.
 
-The *port* is a tag.  The *datum* is any kind of data.  The *port* tag allows the receiving component break down the purpose of an incoming message, or, to queue up an output message with a given purpose.  The actual meaning of *port* tags depends on the project and on the hard-coded implementation of Leaf components.
+The *port* is a tag.  The *datum* is any kind of data.  The *port* tag allows the receiving component to break down the purpose of an incoming message, or, to queue up an output message with a given purpose.  The actual meaning of *port* tags depends on the project and on the hard-coded implementation of Leaf components.
 
-A component is essentially like a stand-alone mini-processor with internal memory.  Each component reacts to one input message at a time and must complete its reaction to a particular message before advancing to the next message.  Note that a reaction might include mutation of some instance data (saved state) without producing any output.  Reactions are meant to be "short" and "quick" and might leave full-blown processing of events to a later date.  
+A component is essentially like a stand-alone mini-processor with internal memory.  Each component reacts to one input message at a time and must complete its reaction to a particular message before advancing to the next message.  Note that a reaction might include mutation of some instance data (saved state) without producing any output.  Reactions are meant to be "short" and "quick" and are allowed to defer full-blown processing of events.  
 
 Note that components are activated for *every* input message.  Unlike other so-called *dataflow* technologies, inputs are not automatically accumulated and synchronized.  The component must perform that kind of work itself, when necessary (but, most often, this is not necessary).
 
@@ -109,14 +109,14 @@ Leaf components do not contain other components.  Leaf components contain *code*
 
 A Container component can be thought of as a mini-operating-system, without the need for extra bloatware to handle MMUs, TRAPs, etc.  In this perspective, 0D Drawware can be thought of as a way to compose mini-operating systems into full-blown solutions (note the similarity to internet and Arduinos and robotics and blockchain and ...).
 
-Most components - Container or Leaf - "just run".  In some cases, though,Leaf components need to do I/O and/or to break out to already-existing code written in a synchronous, long-running manner in some other way.  In such cases, these particular Leaf components need to be coded up by systems programmers and must use the `set_idle` and `set_active` entry points to change components' state.  This technique requires another discussion and will be described in another essay (it is not difficult, but, is on another branch of some other repo)
+Most components - Container or Leaf - "just run".  In some cases, though, Leaf components need to do I/O and/or to break out to already-existing code written in a synchronous, long-running manner in some other way.  In such cases, these particular Leaf components need to be coded up by systems programmers and must use the `set_idle` and `set_active` entry points to change components' state.  This technique requires another discussion and will be described in another essay (it is not difficult, but, is on another branch of some other repo)
 
 ### Process
-Odin implementation of spawning a process with a string command and collecting output sent as a string.
+This package is an Odin implementation of spawning a process with a string command and collecting output sent as a string.
 ### Registry0D
-Table of Leaf and Container components that are available in the diagram and hard-coded in the underlying language (Odin, in this case).
+This package creates a database of Leaf and Container components that are available in the diagram and hard-coded in the underlying language (Odin, in this case).
 ### Syntax
-XML parser that converts .drawio files into internal Odin-accessible form.
+This package is an XML parser that converts .drawio files into internal Odin-accessible form.
 
 The parser recognizes
 - rectangles
@@ -133,7 +133,7 @@ The parser recognizes
 Most everything else is ignored.  This makes it possible to put "comments" on the diagram.  Currently, we use draw.io sticky-notes for comments, by convention.  The shortcut key is `s`. 
 
 ### Leaf0D
-Contains the code (Odin in this case) for Leaf nodes that are available for use in the project.
+This package contains the code (Odin in this case) for Leaf nodes that are available for use in the project.
 
 Each Leaf is described by 2 Odin routines
 1. `..._instantiate`
@@ -151,7 +151,7 @@ In the future, we expect to deprecate the *simple* kind of instantiator and to m
 
 In this experiment, we supply the pre-made Leaf components
 - `1then2`
-	- low-level component for ordering inputs, input 1 is guaranteed to preceed input 2 regardless of possible race conditions
+	- low-level component for ordering inputs, input 1 is guaranteed to preceed input 2 in time regardless of possible race conditions ; for use by systems programmers for creating low-level components
 - `?`
 	- probe
 - `stringconcat`
@@ -171,7 +171,7 @@ In this experiment, we supply the pre-made Leaf components
 - `Transpiler`
 	- given a grammar, a fabrication spec, a support JS file (often empty) and a source text file, produce an output string (a source-to-source transpilation)
 
-Early experimental Leaf components that will be deprecated in the future, but, may serve as inspiration for hard-coded string components:
+Early experimental Leaf components which will be deprecated in the future, but, may serve as inspiration for hard-coded string components in early POCs:
 - `literalgrep`
 - `literalvsh`
 - `literalpsgrepwcl`
@@ -180,26 +180,30 @@ Early experimental Leaf components that will be deprecated in the future, but, m
 - `hard_coded_grepvsh`
 - `hard_coded_wcl`
 
-This package currently contains procedures which parse shell components in an automated manner.  Components that have names that begin with `$` are automatically converted into shell-out commands.  The procedures that automate this process are:
+The `leaf0d` package currently contains procedures which parse shell components in an automated manner.  Components that have names that begin with `$` are automatically converted into shell-out commands.  The procedures that automate this process are:
 - stdout_instantiate
 - stdout_proc
 - process_instantiate
 - process_proc
 - collect_process_leaves.
-The current experimental code requires that these routines be appropriately invoked from the mainline (an experimental wart that we will change in some way in the future).
+The current experimental code requires that these routines be appropriately invoked from the mainline (an experiment that we will change in some way in the future).
 
 ### User0D
-Contains 2 procedures that need to be specified for each unique project:
+This package contains 2 procedures that need to be specified for each unique project:
 1. `start_logger` returns a boolean true/false
 2. `components` appends all Leaf components in the project palette to the procedure argument (a reference to a Registry of leaf initializers)
 
-As mentioned elsewhere, it should be possible to automatically generate the `components` procedure from a GUI or a mini-DSL.  In this experiment, though, we are exploring only the required atomic bits and pieces that are needed to plumb a project together.
+As mentioned elsewhere, it should be possible to automatically generate the `components` procedure from a GUI or a mini-DSL.  In this experiment, though, we are exploring only the required atomic bits and pieces that are needed to manually plumb a project together.
 
 ### Fabghoststars
 - `main.odin`
 	- This package is the main entry point
 
-## Ancilliary Program
+This code must jump through the appropriate hoops to build a component Registry and to parse `$` components.
+
+This code must send the kick-off message(s) to the top-level component of a project.
+
+## Ancillary Program
 - transpile
 
 A JavaScript program (https://github.com/guitarvydas/fabghoststars/blob/main/transpile) that invokes Ohm-JS twice (once to parse the input and once more to parse and act on the fabrication (transpilation) specification SCN (DSL)).
@@ -212,7 +216,7 @@ In this sketch, we use the convention that
 - a blue ellipse represents the Transpiler component.
 
 Transpile a game script to JSON.
-![[ghoststars.svg]]
+![ghoststars](ghoststars.svg)
 # Usage
 make
 # Background
@@ -227,7 +231,14 @@ This is a practical test of the `fab` tool.
 - more transpilation components, to make source-to-source transpilation easier, e.g. GUIs, etc
 - an IDE that supports plugging components together, regardless of the underlying programming language used (probably built with drawware, itself)
 - PROLOG, miniKanren, etc. exhaustive search components
+- text-to-speech component feeding a transpiler component feeding an immediate-execute component
+- Visual Shell
+- Speech Shell
 - ???
+
+# Notes
+- There is no point in building an `a = b + c` component, since textual languages already handle that kind of thing succinctly. VPLs should be used to express programs that are hard to express using only text, e.g. like sequencing, processes with multiple inputs in time, processes with multiple outputs in time, etc.
+- Most normal people don't *want* to program computers and don't *want* to think about tiny little details.  They don't *want* configurability, they just want tools that solve their problems.  There is a class of non-programmer domain experts, though, who want to script computers to do what they want, but, they don't *want* to use traditional programming languages.  This class of domain experts use IDEs like spreadsheets and VB to automate processes that they think can be improved, for example automating appointment booking workflows in dentists' offices.  This class of non-programmer is happy to hack together solutions using pre-built components, plugging them together like LEGO® blocks.  Hypercard® recognized this trend, allowing non-programmers to layer their applications in 5 successively more-configurable levels.  Most so-called General Purpose programming Languages are unsuitable for use by normal people, since GPLs are based on a single, underlying Pattern (which we call "synchronous") that makes building anything other than fancy calculators more difficult than normal people would expect.
 
 # Appendix - Authors
 - Paul Tarvydas - 0d author
