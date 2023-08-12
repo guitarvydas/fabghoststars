@@ -508,7 +508,7 @@ transpiler_leaf_proc :: proc(eh: ^zd.Eh, msg: zd.Message, inst: ^Transpile_Insta
         received_input := msg.datum.(string)
         cmd := fmt.aprintf ("./transpile %s %s %s", inst.grammar_name, inst.fab_name, inst.support_name)
 	captured_output := process.run_command (cmd, received_input)
-        zd.send(eh, "stdout", captured_output)
+        zd.send(eh, "output", captured_output)
      case:
         emsg := fmt.aprintf("!!! ERROR: transpile got an illegal message port %v", msg.port)
 	zd.send(eh, "error", emsg)
