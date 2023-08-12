@@ -14,7 +14,7 @@ For this experiment, I've hand-built a `Transpiler` component in Odin which call
 ![main](main.png)
 ## Textfilereader
 
-![[textfilereader.png]]
+![textfilereader](textfilereader.png)
 
 ## Input Files:
 - `grammar.ohm`
@@ -48,7 +48,7 @@ Note that not all of the output ports fire every time.  In the case of `textfile
 
 The fact that a port fires can be put to good use in the design of the program.  In some cases, you only need to know that a port fired and don't care about the contained data.  In EE, this kind of design is called 'edge-triggered'.  In EE, one can observe the *leading* edge and the *trailing* edge.  In this software implementation, one can only observe a *pulse* with no specific edges, i.e. the software can only know if the port was fired or not, but, cannot know obtain further information about the firing, like beginning-edge-of-firing vs. trailing-edge-of-firing.
 
-![[README 2023-08-12 07.41.03.excalidraw]]
+![edges vs. pulse](pulse.png)
 
 [^main]: The name `main` is arbitrary and can be passed in as a command-line argument.  See `main.odin`.
 
