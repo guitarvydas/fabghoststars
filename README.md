@@ -216,7 +216,7 @@ In this sketch, we use the convention that
 - a blue ellipse represents the Transpiler component.
 
 Transpile a game script to JSON.
-![ghoststars](ghoststars.svg)
+![ghoststars](./ghoststars.svg)
 # Usage
 make
 # Background
