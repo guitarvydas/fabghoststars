@@ -156,13 +156,22 @@
   },
   "active": "0479b07b0b2cf4cd",
   "lastOpenFiles": [
+    "fabghoststars.o",
+    "fabghoststars.ld_AeEzZY",
+    "fabghoststars.ld_qwkM6J",
+    "leaf0d/#leaf0d.odin#",
+    "user0d/#user0d.odin#",
+    "process/#process.odin#",
+    "#transpile#",
+    "transpile~",
+    "transpile",
+    "#main.odin#",
+    "fabghoststars.dSYM/Contents/Resources/DWARF/fabghoststars",
+    "0d/README.md",
     "doc/fabghoststars.svg.md",
     "README.md",
     "doc/fabghoststars.png",
-    "doc/ghoststars.svg.crswap",
     "doc/ghoststars.svg",
-    "doc/ghoststars.excalidraw.crswap",
-    "doc/ghoststars.excalidraw",
     "doc/invoking script to JSON Screen Shot 2022-10-19 at 10.04.15 AM.png"
   ]
 }

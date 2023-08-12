@@ -1,3 +1,5 @@
+ODIN_FLAGS ?= -debug -o:none
+
 all: run
 
 install: npmstuff
@@ -6,7 +8,8 @@ npmstuff:
 	npm install ohm-js yargs atob pako
 
 run: 
-	./fab grammar.ohm fabricate.fab <src.txt
+	odin build . $(ODIN_FLAGS)
+	./fabghoststars
 
-runlisp:
-	./fab grammar.ohm lispfabricate.fab <src.txt
+bashversion:
+	./transpile grammar.ohm fabricate.fab support.js <src.txt 
