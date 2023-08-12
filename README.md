@@ -1,8 +1,5 @@
 Transpile a game script to JSON.
-![overview](doc/fabghoststars.png)
-
-# Full Diagram
-![complete](doc/fabghoststars-full.png)
+![[ghoststars.svg]]
 # Usage
 make
 # Background
