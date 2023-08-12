@@ -11,11 +11,9 @@
             "id": "0479b07b0b2cf4cd",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "excalidraw",
               "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
+                "file": "Excalidraw/README 2023-08-12 07.41.03.excalidraw.md"
               }
             }
           }
@@ -93,7 +91,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "Excalidraw/README 2023-08-12 07.41.03.excalidraw.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +108,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "Excalidraw/README 2023-08-12 07.41.03.excalidraw.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,7 +131,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "Excalidraw/README 2023-08-12 07.41.03.excalidraw.md"
               }
             }
           }
@@ -157,8 +155,13 @@
   },
   "active": "0479b07b0b2cf4cd",
   "lastOpenFiles": [
-    "pulse.svg",
+    "pulse.png",
+    "Excalidraw/README 2023-08-12 07.41.03.excalidraw.png",
+    "Excalidraw/pulse.png",
     "Excalidraw/pulse.svg",
+    "Excalidraw/README 2023-08-12 07.41.03.excalidraw.md",
+    "README.md",
+    "pulse.svg",
     "textfilereader.png",
     "main.png",
     "#src.txt#",
@@ -166,9 +169,6 @@
     "textfilereader Screenshot 2023-08-12 at 9.19.42 AM.png",
     "Screenshot 2023-08-12 at 9.19.31 AM.png",
     "Screenshot 2023-08-12 at 9.19.42 AM.png",
-    "Excalidraw/README 2023-08-12 07.41.03.excalidraw.md",
-    "Excalidraw/README 2023-08-12 07.41.03.excalidraw.svg",
-    "README.md",
     "Excalidraw",
     "fabghoststars.o",
     "fabghoststars.ld_AeEzZY",
@@ -179,8 +179,6 @@
     "#transpile#",
     "transpile~",
     "0d/README.md",
-    "doc/fabghoststars.svg.md",
-    "doc/fabghoststars.png",
-    "doc/ghoststars.svg"
+    "doc/fabghoststars.svg.md"
   ]
 }
