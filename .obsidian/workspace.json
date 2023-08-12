@@ -182,9 +182,10 @@
   },
   "active": "0479b07b0b2cf4cd",
   "lastOpenFiles": [
-    "doc/ghoststars.svg",
     "ghoststars.svg",
     "README.md",
+    "doc/ghoststars.excalidraw",
+    "doc/ghoststars.svg",
     "Excalidraw/README 2023-08-12 07.41.03.excalidraw.md",
     "pulse.png",
     "Excalidraw/README 2023-08-12 07.41.03.excalidraw.png",
@@ -195,7 +196,6 @@
     "main.png",
     "#src.txt#",
     "main Screenshot 2023-08-12 at 9.19.31 AM.png",
-    "textfilereader Screenshot 2023-08-12 at 9.19.42 AM.png",
     "Excalidraw",
     "fabghoststars.o",
     "fabghoststars.ld_AeEzZY",
@@ -204,7 +204,6 @@
     "user0d/#user0d.odin#",
     "process/#process.odin#",
     "#transpile#",
-    "transpile~",
     "0d/README.md",
     "doc/fabghoststars.svg.md"
   ]
