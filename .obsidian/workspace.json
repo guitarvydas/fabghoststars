@@ -4,47 +4,22 @@
     "type": "split",
     "children": [
       {
-        "id": "dd8d325c967e1121",
-        "type": "split",
+        "id": "f2e23f6ef080f6d2",
+        "type": "tabs",
         "children": [
           {
-            "id": "f2e23f6ef080f6d2",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "0479b07b0b2cf4cd",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "README.md",
-                    "mode": "source",
-                    "source": false
-                  }
-                }
+            "id": "0479b07b0b2cf4cd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
               }
-            ]
-          },
-          {
-            "id": "0de2dd4189005e40",
-            "type": "tabs",
-            "children": [
-              {
-                "id": "4bee1f29e78501d8",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "README.md",
-                    "mode": "source",
-                    "source": false
-                  }
-                }
-              }
-            ]
+            }
           }
-        ],
-        "direction": "horizontal"
+        ]
       }
     ],
     "direction": "vertical"

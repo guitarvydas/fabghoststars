@@ -217,15 +217,11 @@ In this sketch, we use the convention that
 
 Transpile a game script to JSON.
 ![ghoststars](doc/ghoststars.svg)
-# Usage
-make
-# Background
-This is a practical test of the `fab` tool.
 
 # Future
 - A.I. (Khoj, Llama, etc.) component(s)
 - a drawware implementation of a 0D compiler that emits Odin, Python, Common Lisp, JavaScript, etc. code
-- a string constant component which the parser recognizes and generates appropriate code for
+- a string constant icon which the parser recognizes and generates appropriate component code for
 - replace `user0d.odin` with some kind of mini-DSL or spreadsheet or HTML GUI that automatically generates the necessary code for inclusion in a project
 - more game-creation components, Container and Leaf
 - more transpilation components, to make source-to-source transpilation easier, e.g. GUIs, etc
@@ -237,7 +233,7 @@ This is a practical test of the `fab` tool.
 - ???
 
 # Notes
-- There is no point in building an `a = b + c` component, since textual languages already handle that kind of thing succinctly. VPLs should be used to express programs that are hard to express using only text, e.g. like sequencing, processes with multiple inputs in time, processes with multiple outputs in time, etc.
+- There is no point in building an `a = b + c` component, since textual languages already handle that kind of thing succinctly. VPLs should be used to express programs that are hard to express using only text, e.g. like sequencing, processes with multiple inputs over time, processes with multiple outputs over time, etc.
 - Most normal people don't *want* to program computers and don't *want* to think about tiny little details.  They don't *want* configurability, they just want tools that solve their problems.  There is a class of non-programmer domain experts, though, who want to script computers to do what they want, but, they don't *want* to use traditional programming languages.  This class of domain experts use IDEs like spreadsheets and VB to automate processes that they think can be improved, for example automating appointment booking workflows in dentists' offices.  This class of non-programmer is happy to hack together solutions using pre-built components, plugging them together like LEGO® blocks.  Hypercard® recognized this trend, allowing non-programmers to layer their applications in 5 successively more-configurable levels.  Most so-called General Purpose programming Languages are unsuitable for use by normal people, since GPLs are based on a single, underlying Pattern (which we call "synchronous") that makes building anything other than fancy calculators more difficult than normal people would expect.
 
 # Appendix - Authors
