@@ -11,5 +11,7 @@ run:
 	odin build . $(ODIN_FLAGS)
 	./fabghoststars
 
-bashversion:
+json:
 	./transpile grammar.ohm fabricate.fab support.js <src.txt 
+lisp:
+	./transpile grammar.ohm lispfabricate.fab support.js <src.txt 

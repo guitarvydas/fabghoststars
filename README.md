@@ -1,4 +1,4 @@
-Demo of using Drawware to transpile a partial game script into JSON.
+Demo of using Drawware to transpile a partial game script into JSON and Common Lisp.
 
 # Usage
 - edit the diagram `ghoststars.drawio` (and save)
