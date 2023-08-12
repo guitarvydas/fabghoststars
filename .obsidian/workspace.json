@@ -157,6 +157,8 @@
   },
   "active": "0479b07b0b2cf4cd",
   "lastOpenFiles": [
+    "textfilereader.png",
+    "main.png",
     "#src.txt#",
     "main Screenshot 2023-08-12 at 9.19.31 AM.png",
     "textfilereader Screenshot 2023-08-12 at 9.19.42 AM.png",
@@ -174,7 +176,6 @@
     "process/#process.odin#",
     "#transpile#",
     "transpile~",
-    "transpile",
     "0d/README.md",
     "doc/fabghoststars.svg.md",
     "doc/fabghoststars.png",

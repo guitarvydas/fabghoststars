@@ -11,10 +11,10 @@ For this experiment, I've hand-built a `Transpiler` component in Odin which call
 
 ## Main
 
-![[main Screenshot 2023-08-12 at 9.19.31 AM.png]]
+![main](main.png)
 ## Textfilereader
 
-![[textfilereader Screenshot 2023-08-12 at 9.19.42 AM.png]]
+![[textfilereader.png]]
 
 ## Input Files:
 - `grammar.ohm`
