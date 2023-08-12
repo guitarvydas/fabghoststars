@@ -12,4 +12,4 @@ run:
 	./fabghoststars
 
 dev:
-	./transpile 0<src.txt 3<grammar.ohm 4<fabricate.fab 5<support.js 
+	./transpile grammar.ohm fabricate.fab support.js <src.txt 

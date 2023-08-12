@@ -487,3 +487,39 @@ read_text_from_fd_proc :: proc(eh: ^zd.Eh, msg: zd.Message) {
     }
 }
 
+//////////
+
+Transpile_Instance_Data :: struct {
+    grammar_name : string,
+    fab_name : string,
+    support_name : string
+}
+
+transpile_leaf_instantiate :: proc(name: string) -> ^zd.Eh {
+    @(static) counter := 0
+    counter += 1
+
+    name_with_id := fmt.aprintf("icommand (ID:%d)", counter)
+    inst := new (Transpile_Instance_Data)
+    return zd.make_leaf_with_data (name_with_id, inst, transpile_leaf_proc)
+}
+
+transpile_leaf_proc :: proc(eh: ^zd.Eh, msg: zd.Message, inst: ^Transpile_Instance_Data) {
+    switch msg.port {
+    case "grammar":
+        inst.grammar_name = msg.datum.(string)
+    case "fab":
+        inst.fab_name = msg.datum.(string)
+    case "support":
+        inst.support_name = msg.datum.(string)
+    case "stdin":
+        received_input := msg.datum.(string)
+	cmd: strings.Builder
+	defer strings.builder_destroy(&sb)
+        fmt.sbprintf(&cmd, "./transpile %s %s %s", inst.grammar_name, inst.fab_name, inst.support_name)
+	captured_output := process.run_command (cmd, received_input)
+        zd.send(eh, "stdout", captured_output)
+    case:
+        fmt.assertf (false, "!!! ERROR: transpile got an illegal message port %v", msg.port)
+    }
+}
