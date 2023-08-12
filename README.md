@@ -7,6 +7,8 @@ Demo of using Drawware to transpile a game script into JSON.
 # Tour
 For this experiment, I've included all of the `odin0d` code in with the `ghostars` text.
 
+Presently, there is a dearth of components, so this demo can show only a very simple example.  In the future, more components will be built up using layers of drawware.
+
 For this experiment, I've hand-built a `Transpiler` component in Odin which calls Ohm-JS and Fab to do the transpilation.  This can probably be done better, but I had to start somewhere...
 
 ## Main
