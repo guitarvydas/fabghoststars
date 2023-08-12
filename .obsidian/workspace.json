@@ -157,6 +157,8 @@
   },
   "active": "0479b07b0b2cf4cd",
   "lastOpenFiles": [
+    "pulse.svg",
+    "Excalidraw/pulse.svg",
     "textfilereader.png",
     "main.png",
     "#src.txt#",
@@ -179,7 +181,6 @@
     "0d/README.md",
     "doc/fabghoststars.svg.md",
     "doc/fabghoststars.png",
-    "doc/ghoststars.svg",
-    "doc/invoking script to JSON Screen Shot 2022-10-19 at 10.04.15 AM.png"
+    "doc/ghoststars.svg"
   ]
 }
