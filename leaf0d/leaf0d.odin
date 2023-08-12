@@ -414,16 +414,12 @@ read_text_file_proc :: proc(eh: ^zd.Eh, msg: zd.Message) {
 	if success {
 	    zd.send(eh, "str", transmute(string)data)
 	} else {
-	    sb: strings.Builder
-	    defer strings.builder_destroy(&sb)
-            fmt.sbprintf(&sb, "read error on file %s", msg.datum.(string))
-	    zd.send(eh, "error", sb)
+            emsg := fmt.aprintf("read error on file %s", msg.datum.(string))
+	    zd.send(eh, "error", emsg)
 	}
     } else {
-	sb: strings.Builder
-	defer strings.builder_destroy(&sb)
-        fmt.sbprintf(&sb, "open error on file %s with error code %v", msg.datum.(string), errnum)
-	zd.send(eh, "error", sb)
+        emsg := fmt.aprintf("open error on file %s with error code %v", msg.datum.(string), errnum)
+	zd.send(eh, "error", emsg)
     }
 }
 
@@ -457,10 +453,8 @@ open_text_file_proc :: proc(eh: ^zd.Eh, msg: zd.Message) {
 	fmt.println ("fd = ", fd)
 	zd.send(eh, "fd", fd)
     } else {
-	sb: strings.Builder
-	defer strings.builder_destroy(&sb)
-        fmt.sbprintf(&sb, "open error on file %s with error code %v", msg.datum.(string), errnum)
-	zd.send(eh, "error", sb)
+        emsg := fmt.aprintf("open error on file %s with error code %v", msg.datum.(string), errnum)
+	zd.send(eh, "error", emsg)
     }
 }
 
@@ -480,10 +474,8 @@ read_text_from_fd_proc :: proc(eh: ^zd.Eh, msg: zd.Message) {
     if success {
 	zd.send(eh, "str", transmute(string)data)
     } else {
-	sb: strings.Builder
-	defer strings.builder_destroy(&sb)
-        fmt.sbprintf(&sb, "read error on file %s", msg.datum.(string))
-	zd.send(eh, "error", sb)
+        emsg := fmt.aprintf("read error on file %s", msg.datum.(string))
+	zd.send(eh, "error", emsg)
     }
 }
 
@@ -495,16 +487,16 @@ Transpile_Instance_Data :: struct {
     support_name : string
 }
 
-transpile_leaf_instantiate :: proc(name: string) -> ^zd.Eh {
+transpiler_instantiate :: proc(name: string) -> ^zd.Eh {
     @(static) counter := 0
     counter += 1
 
-    name_with_id := fmt.aprintf("icommand (ID:%d)", counter)
+    name_with_id := fmt.aprintf("Transpiler (ID:%d)", counter)
     inst := new (Transpile_Instance_Data)
-    return zd.make_leaf_with_data (name_with_id, inst, transpile_leaf_proc)
+    return zd.make_leaf_with_data (name_with_id, inst, transpiler_leaf_proc)
 }
 
-transpile_leaf_proc :: proc(eh: ^zd.Eh, msg: zd.Message, inst: ^Transpile_Instance_Data) {
+transpiler_leaf_proc :: proc(eh: ^zd.Eh, msg: zd.Message, inst: ^Transpile_Instance_Data) {
     switch msg.port {
     case "grammar":
         inst.grammar_name = msg.datum.(string)
@@ -514,12 +506,11 @@ transpile_leaf_proc :: proc(eh: ^zd.Eh, msg: zd.Message, inst: ^Transpile_Instan
         inst.support_name = msg.datum.(string)
     case "stdin":
         received_input := msg.datum.(string)
-	cmd: strings.Builder
-	defer strings.builder_destroy(&sb)
-        fmt.sbprintf(&cmd, "./transpile %s %s %s", inst.grammar_name, inst.fab_name, inst.support_name)
+        cmd := fmt.aprintf ("./transpile %s %s %s", inst.grammar_name, inst.fab_name, inst.support_name)
 	captured_output := process.run_command (cmd, received_input)
         zd.send(eh, "stdout", captured_output)
-    case:
-        fmt.assertf (false, "!!! ERROR: transpile got an illegal message port %v", msg.port)
+     case:
+        emsg := fmt.aprintf("!!! ERROR: transpile got an illegal message port %v", msg.port)
+	zd.send(eh, "error", emsg)
     }
 }

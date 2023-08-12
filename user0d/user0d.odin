@@ -20,6 +20,7 @@ components :: proc (leaves: ^[dynamic]reg.Leaf_Initializer) {
     append(leaves, reg.Leaf_Instantiator { name = "Read Text File", init = leaf.read_text_file_instantiate })
     append(leaves, reg.Leaf_Instantiator { name = "Read Text From FD", init = leaf.read_text_from_fd_instantiate })
     append(leaves, reg.Leaf_Instantiator { name = "Open Text File", init = leaf.open_text_file_instantiate })
+    append(leaves, reg.Leaf_Instantiator { name = "Transpiler", init = leaf.transpiler_instantiate })
 
     // in the fullness of time, these can probably be deleted...
     append(leaves, reg.Leaf_Instantiator { name = "literalgrep", init = leaf.literalgrep_instantiate })
