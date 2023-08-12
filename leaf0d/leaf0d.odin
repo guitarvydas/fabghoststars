@@ -409,7 +409,6 @@ read_text_file_instantiate :: proc(name: string) -> ^zd.Eh {
 read_text_file_proc :: proc(eh: ^zd.Eh, msg: zd.Message) {
     fd, errnum := os.open (msg.datum.(string))
     if errnum == 0 {
-	fmt.println ("fd = ", fd)
 	data, success := os.read_entire_file_from_handle (fd)
 	if success {
 	    zd.send(eh, "str", transmute(string)data)
